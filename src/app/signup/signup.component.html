@@ -1,0 +1,39 @@
+<div class="col-md-4 offset-4 card-mt-4">
+    <div class="card-body">
+        <h1 class="display-5
+         text-center">Signup</h1>
+        <form action="" [formGroup]="form" (ngSubmit)="submit(form)">
+            <div class="form-group">
+                <label for="username">username</label>
+                <input formControlName="username"
+                type="text" class="form-control"
+                id="username"
+                placeholder="enter username">
+                <div class="alert alert-danger mt-2"
+                *ngIf="username.touched && username.invalid">
+                    <p *ngIf="username.errors.required">username is required</p>
+                    <p *ngIf="username.errors.minlength">username should be of minimum 4 character</p>
+                    <p *ngIf="username.errors.pattern">username is not matching</p>
+                    <p *ngIf="username.errors.noSpaceBetweenUsername">Don't give space between username</p>
+                    <p *ngIf="username.errors.unique">username should be unique</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input formControlName="password" 
+                 type="text" class="form-control"
+                id="password"
+                placeholder="enter your password">
+                <div class="alert alert-danger mt-2"
+                *ngIf="password.touched && password.invalid">
+                <p *ngIf="password.errors.required">password is required</p>
+                <p *ngIf="password.errors.minlength">password should be of minimum 4 character</p>
+                <p *ngIf="password.errors.pattern">password is not matching</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-dark btn-block">Signup</button>
+            </div>
+        </form>
+    </div>
+</div>

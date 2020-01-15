@@ -1,0 +1,123 @@
+
+<button class="btn btn-primary mt-4"
+  (click)="addEmp()">Add Employees</button>
+
+  <input type="search"
+  class="form-control mb-4 mt-4" placeholder="search name"
+  [(ngModel)]="searchText">
+  <h1>{{searchText}}</h1>
+
+<table class="table table-striped table-dark">
+  <thead>
+  <tr>
+    <th>index</th>
+    <th>empId</th>
+    <th>name</th>
+    <th>salary</th>
+    <th>Designation</th>
+    <th>company</th>
+    <th>location</th>
+    <th>Doj</th>
+    <th>Photo</th>
+    <th>College</th>
+    <th>Remove</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employee | filter:searchText;index as i"
+    [ngStyle]="{'color':'red','padding':'10px',
+  'background-color':'green'}">
+      <td><span class="badge badge-success">{{i+1}}</span></td>
+      <td>{{emp.empId}}</td>
+      <td>{{emp.name}}</td>
+      <td>{{emp.salary}}</td>
+      <td>{{emp.Designation}}</td>
+      <td>{{emp.company}}</td>
+      <td>{{emp.location}}</td>
+      <td>{{emp.Doj}}</td>
+      <td><img class="img-fluid-rounded" width="100" height="100" src="{{emp.Photo}}" alt="photo"/></td>
+      <td>{{emp.College}}</td>
+      <td><button
+        class="btn btn-primary"
+        (click)="removeEmp(emp)">Remove</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <div *ngIf="employee.length>0;then emp else noemp">
+  Employees are here
+</div>
+
+<ng-template #emp>
+  <h1 style="color:green;">employees here</h1>
+</ng-template>
+
+<ng-template #noemp>
+  <h1 style="color:red;">no employees here</h1>
+</ng-template>
+ -->
+ <span [ngSwitch]="color">
+   <p *ngSwitchCase="'red'">
+     red color
+   </p>
+   <p *ngSwitchCase="'blue'">
+      Blue color
+    </p>
+    <p *ngSwitchDefault>
+        no color is here
+      </p>
+ </span>
+
+ <div class="container">
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>login</th>
+      <th>Photo</th>
+      <th>url</th>
+      <th>followers_url</th>
+      <th>type</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users;index as i">
+          <td>{{user.login}}</td>
+          <td><img src="{{user.avatar_url}}"
+            width="100"
+            height="100" 
+            alt="" class="img-fluid img-rounded rounded-circle"></td>
+          <td>{{user.url}}</td>
+          <td>{{user.followers_url}}</td>
+          <td>{{user.type}}</td>
+        </tr>
+      </tbody>
+</table>
+</div>
+
+
+<div class="container">
+  <input type="text" class="form-control mt-2"
+  (keyup.enter)="addPost(title)" #title 
+  placeholder="enter a title">  <!-- this variable is holding input element-->
+  <table class="table table-bordered table-striped table-dark">
+    <thead class="thead-dark">
+      <tr>
+        <th>index</th>
+        <th>title</th>
+        <th>body </th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts;index as i">
+        <td><span class="badge badge-danger">{{i+1}}</span></td>
+        <td>{{post.title}}</td>
+        <td>{{post.body}}</td>
+        <button class="btn btn-danger btn-md" (click)="removePost(post)">Remove</button>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ 
+
+

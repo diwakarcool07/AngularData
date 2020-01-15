@@ -1,0 +1,67 @@
+  <form action="" [formGroup]="contact" (ngSubmit)="submit(contact)">
+       <h1 class="display-4 text-center">Contact Form</h1>
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                  <label for="name">name</label>
+                   <input formControlName="name"
+                   type="text"
+                    class="form-control"
+                     id="name" placeholder="enter your name">
+                     <div class="alert alert-danger text-danger mt-2"
+                     *ngIf="name.touched && name.invalid">
+                         <p *ngIf="name.errors.required">name is required</p>
+                         <p *ngIf="name.errors.minLength">name should be of 5 character</p>
+                     </div>
+                     </div>
+                     <div class="form-group col-md-6">
+                         <label for="inputPassword4">phone</label>
+                         <input type="phone" class="form-control" id="inputphone" 
+                         placeholder="enter phone">
+                        </div>
+                         <div class="form-group col-md-12">
+                             <label for="inputEmail4">email</label>
+                             <input type="email" class="form-control" id="inputEmail4" 
+                             placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputAddress">adress</label>
+                                <input type="text" class="form-control" 
+                                id="inputAddress" placeholder="enter adress">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress2">adress1</label>
+                                <input type="text" class="form-control" 
+                                id="inputAddress2" 
+                                placeholder="add adress1">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputCity">city</label>
+                                <input type="text" 
+                                class="form-control" 
+                                id="inputCity">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputState">state</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputZip">pincode</label>
+                                <input type="text" 
+                                class="form-control" 
+                                id="inputpincode">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputcountry">country</label>
+                                <select id="inputcountry" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option *ngFor="let country of country_list" value="{{country}}">{{country}}</option>
+                                </select>
+                                <div class="form-group mt-4">
+                                    <button class="btn btn-dark btn-block" style="transition: ease-in-out 1s all;">submit</button>
+                                </div>
+                            </div>
+                        </div>
+                   </form>
